@@ -12,10 +12,11 @@ if(isset($_GET["pro"])){
   $genero=$_GET['banco'];
   $direccion=$_GET['dirreccion'];
   $profesion=$_GET['Profesión'];
+  $no_empleado=$_GET['nom'];
 
-    $query="INSERT INTO  obras_publicas_nomina (hora_entrada,hora_salida,sueldo_quincenal,fecha_pago,forma_pago,tipo_banco,	dias_laborales,fecha_ingreso) VALUES (?,?,?,?,?,?,?,?)";
+    $query="INSERT INTO  obras_publicas_nomina (hora_entrada,hora_salida,sueldo_quincenal,fecha_pago,forma_pago,tipo_banco,	dias_laborales,fecha_ingreso,no_empleado) VALUES (?,?,?,?,?,?,?,?,?)";
     $sentencia=mysqli_prepare($getconex,$query);
-    mysqli_stmt_bind_param($sentencia,"ssssssss",$nombre,$edad,$curp,$num_tel,$nacionalidad,$genero,$direccion,$profesion);
+    mysqli_stmt_bind_param($sentencia,"sssssssss",$nombre,$edad,$curp,$num_tel,$nacionalidad,$genero,$direccion,$profesion,$no_empleado);
     mysqli_stmt_execute($sentencia);
     $afectado=mysqli_stmt_affected_rows($sentencia);
     if($afectado==1){
